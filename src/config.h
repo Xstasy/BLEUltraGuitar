@@ -12,12 +12,12 @@ const char* DEVICE_NAME=    "XGuitar";
 #define FRET_YELLOW                 25
 #define FRET_BLUE                   26
 #define FRET_ORANGE                 27
-#define FRET_BOUNCE_MS               1
+#define FRET_BOUNCE_MS               5
 
 #define STRUM_UP                    14
 #define STRUM_DOWN                  12
-#define STRUM_UP_BOUNCE_MS           1
-#define STRUM_DOWN_BOUNCE_MS         1
+#define STRUM_UP_BOUNCE_MS           5
+#define STRUM_DOWN_BOUNCE_MS         5
 
 #define START                       19
 #define SELECT                      22
