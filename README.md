@@ -26,6 +26,8 @@ ESP32 Bluetooth 4.2 Low Energy Guitar Hero Controller
     - Orange: 27 
     - Strum up: 14
     - Strum down: 12
-    - Tilt: 15 (optional)
-    - Whammy: 36 (optional)
-    - Battery: 39 (optional)
+    - Start: 22
+    - Select: 19
+    - Tilt: 15
+    - Whammy: 36
+    - Battery: 39

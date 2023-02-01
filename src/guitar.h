@@ -51,7 +51,6 @@ int lastHit = millis();
 #endif
 
 #ifdef BATTERY_PIN
-    bool by = true;
     int bp = BATTERY_PIN;   
     int bIndex, bAvg, bTot = 0;
     int bSamples[BATTERY_SAMPLES];
