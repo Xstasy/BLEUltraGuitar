@@ -2,24 +2,30 @@
 
 # BLEULtraGuitar - ESP32
 ESP32 Bluetooth 4.2 Low Energy Guitar Hero Controller
-- [x] ⏩1000hz polling
+- [x] ⏩1000hz polling (loop time is about 15µs)
 - [x] 🧵Multithreaded
 - [x] 🪫Battery support
 - [x] 👋Whammybar support
 - [x] 🫠Mercury tilt switch
 - [x] 🔬12 bit ADC which uses vref from efuse
-- [x] 😴Deep sleep @ ~10µA - wakeup from RTC1 frets)
+- [x] 😴Deep sleep @ ~10µA - wakeup from RTC1 pins
 - [ ] 🚥LED Support from frets & strumbar (coming soon™️)
 
 ## Installation
 - Open project from [Platform.IO](https://platformio.org/platformio-ide) home screen
 - Define proper pins in config.h (or use the ones defined in there)
-- Click the PIO Icon on the left menu and select upload / upload & monitor under BLEUltraGuitar >
+- Click the PIO Icon on the left menu and select upload / upload & monitor under BLEUltraGuitar
 
 ## Default Pins
     - Green: 32 - Red: 33 - Yellow: 25 - Blue: 26 - Orange: 27 
     - Strum up: 14 - Strum down: 12 - Start: 22 - Select: 19
     - Tilt: 15 - Whammy: 36 - Battery: 39
+
+ [$2.31 ESP32 with battery charging circuit + connector](https://www.aliexpress.com/item/33009178296.html) @ Aliexpress
+I've personally ordered a few of these and I've not yet had a failing item.
+![](https://i.imgur.com/ay6bxRN.png)
+
+
 
 ## [ License](https://github.com/Xstasy/BLEUltraGuitar/blob/master/LICENSE.md)
 
