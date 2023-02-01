@@ -21,8 +21,10 @@ ESP32 Bluetooth 4.2 Low Energy Guitar Hero Controller
     - Strum up: 14 - Strum down: 12 - Start: 22 - Select: 19
     - Tilt: 15 - Whammy: 36 - Battery: 39
 
- [$2.31 ESP32 with battery charging circuit + connector](https://www.aliexpress.com/item/33009178296.html) @ Aliexpress
+[$2.31 ESP32 with battery charging circuit + connector](https://www.aliexpress.com/item/33009178296.html) @ Aliexpress
+
 I've personally ordered a few of these and I've not yet had a failing item.
+
 ![](https://i.imgur.com/ay6bxRN.png)
 
 
