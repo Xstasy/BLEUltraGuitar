@@ -12,12 +12,12 @@ const char* DEVICE_NAME=    "XGuitar";
 #define FRET_YELLOW                 25
 #define FRET_BLUE                   26
 #define FRET_ORANGE                 27
-#define FRET_BOUNCE_MS               5
+#define FRET_BOUNCE_MS               1
 
 #define STRUM_UP                    14
 #define STRUM_DOWN                  12
-#define STRUM_UP_BOUNCE_MS           5
-#define STRUM_DOWN_BOUNCE_MS         5
+#define STRUM_UP_BOUNCE_MS           4
+#define STRUM_DOWN_BOUNCE_MS         4
 
 #define START                       19
 #define SELECT                      22
@@ -29,14 +29,14 @@ const char* DEVICE_NAME=    "XGuitar";
 // Pins 34,35,36,39 can be used for
 // Battery voltage sensing or whammy
 // Uncomment/comment to enable/disable
-#define BATTERY_PIN                 35 
+#define BATTERY_PIN                 0 
 #define BATTERY_SAMPLES             30
 #define BATTERY_HZ                  60
 
 // Pins 34,35,36,39 can be used for
 // Battery voltage sensing or whammy
 // Uncomment/comment to enable/disable
-#define WHAMMY_PIN                  36 
+#define WHAMMY_PIN                   0 
 #define WHAMMY_SAMPLES              20
 #define WHAMMY_HZ                    5
 

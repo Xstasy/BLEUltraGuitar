@@ -24,23 +24,16 @@ const char* bN[10] = {
 
 };
 
-byte vn[21] = { 0x53, 0x54, 0x52, 0x55, 0x4D, 0x2E, 0x42, 0x41, 0x52, 0x20, 0x2D, 0x20, 0x42, 0x59, 0x20, 0x58, 0x53, 0x54, 0x41, 0x53, 0x59 };
-String vnd() {
-    String v;
-    for(int i = 0; i < 21; i++) 
-        v += String((char)vn[i]);
-    return v;
-}
-const char* vi = vnd().c_str();
 Bounce btns[10] = { Bounce(), Bounce(), Bounce(), Bounce(), Bounce(), Bounce(), Bounce(), Bounce(), Bounce(), Bounce() };
 int bpins[10] = { FRET_GREEN, FRET_RED, FRET_YELLOW, FRET_BLUE, FRET_ORANGE, SELECT, START, TILT, STRUM_UP, STRUM_DOWN };
-BleGamepad pad = BleGamepad(DEVICE_NAME, vnd().c_str(), 100);
+BleGamepad pad = BleGamepad(DEVICE_NAME, "Strum.bar", 100);
 BleGamepadConfiguration cfg;
 
+bool update = false;
 int ticks = 0;
 int lastHit = millis();
 
-#ifdef WHAMMY_PIN
+#if defined(WHAMMY_PIN) && WHAMMY_PIN > 0
     int wp = WHAMMY_PIN;
     int wMin = 32767;
     int wSamples[WHAMMY_SAMPLES];
@@ -50,7 +43,7 @@ int lastHit = millis();
     int wp = 0;
 #endif
 
-#ifdef BATTERY_PIN
+#if defined(BATTERY_PIN) && BATTERY_PIN > 0
     int bp = BATTERY_PIN;   
     int bIndex, bAvg, bTot = 0;
     int bSamples[BATTERY_SAMPLES];

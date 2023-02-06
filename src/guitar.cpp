@@ -1,6 +1,6 @@
 #include <guitar.h>
 
-#ifdef BATTERY_PIN
+#if defined(BATTERY_PIN) && BATTERY_PIN > 0
     void bTask(void * parameter) {
         const TickType_t xDelay = BATTERY_HZ / portTICK_PERIOD_MS;
         for( ;; ) {
@@ -25,7 +25,7 @@
     }
 #endif
 
-#ifdef WHAMMY_PIN
+#if defined(WHAMMY_PIN) && WHAMMY_PIN > 0
     void wTask(void * parameter) {
         const TickType_t xDelay = WHAMMY_HZ / portTICK_PERIOD_MS;
         bool ft = true;
@@ -91,8 +91,12 @@ void setup() {
 
     if(wp > 0 || bp > 0) {
         adc1_config_width(ADC_WIDTH_12Bit);
-        if(wp > 0) adc1_config_channel_atten(wc, ADC_ATTEN_11db);
-        if(bp > 0) adc1_config_channel_atten(bc, ADC_ATTEN_11db);
+        #if defined(WHAMMY_PIN) && WHAMMY_PIN > 0
+            adc1_config_channel_atten(wc, ADC_ATTEN_11db);
+        #endif
+        #if defined(BATTERY_PIN) && BATTERY_PIN > 0
+            adc1_config_channel_atten(bc, ADC_ATTEN_11db);
+        #endif
     }
 
     for(int i = 0; i < 10; i++) {
@@ -113,11 +117,12 @@ void setup() {
     cfg.setPid(0x6969);
     pad.begin(&cfg);
 
-    #ifdef WHAMMY_PIN
+    #if defined(WHAMMY_PIN) && WHAMMY_PIN > 0
         xTaskCreate(&wTask, "wTask", 10000, NULL, 5,  NULL);
     #endif
     
-    #ifdef BATTERY_PIN
+    
+    #if defined(BATTERY_PIN) && BATTERY_PIN > 0
         xTaskCreate(&bTask, "bTask", 10000, NULL, 10, NULL);
         esp_err_t error;
         for(int i = 0; i < 5; i++) {
@@ -143,25 +148,26 @@ void setup() {
 
 void loop() {
     ticks++;
-    bool u = false;
     long s = micros();
 
     for(int i = 0; i < 10; i++) {
         btns[i].update();
-        if(btns[i].fell()) u = Button(i);
-        if(btns[i].rose()) u = Button(i, 0);
+        if(btns[i].fell())      update = Button(i);
+        else if(btns[i].rose()) update = Button(i, 0);
     }
-
-    if(u) lastHit = millis();    
     
-    if(ticks >= 10000) {
+    if(ticks >= 20000) {
         ticks = 0;
-        if((millis() - lastHit) > 120000)
+        if((millis() - lastHit && bp > 0) > 120000)
             esp_deep_sleep_start();
     }
     
-    pad.sendReport();
-    delayMicroseconds(980);
+    if(update) {
+        lastHit = millis();   
+        pad.sendReport();
+    }
+    
+    delayMicroseconds(180);
 
     #ifdef DEBUG_LOOP_TIME
         Serial.printf("%d, ", (micros() - s));
