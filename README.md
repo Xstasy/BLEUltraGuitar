@@ -1,6 +1,6 @@
 
 
-# BLEULtraGuitar - ESP32
+# BLEUltraGuitar - ESP32
 ESP32 Bluetooth 4.2 Low Energy Guitar Hero Controller
 - [x] ⏩1000hz polling (loop time is about 15µs)
 - [x] 🧵Multithreaded
@@ -27,6 +27,8 @@ I've personally ordered a few of these and I've not yet had a failing item.
 
 ![](https://i.imgur.com/ay6bxRN.png)
 
+
+There's also ESP32-S3 which will support USB host connection if you don't want to rely on 850hz BT 4.2 (even though it is more than enough)
 
 
 ## [ License](https://github.com/Xstasy/BLEUltraGuitar/blob/master/LICENSE.md)
